@@ -53,15 +53,27 @@
 
 ### 如何使用
 
-#### 1. 作为 Antigravity / Gemini IDE 技能导入
+#### 1. 在 Cursor 中使用
+* **作为全局规则/自定义指令**：打开 Cursor 的 `Settings -> Features -> Rules for AI`，将 `SKILL.md` 中 `---` 之后的内容复制进去。
+* **作为项目规则**：在项目根目录下创建 `.cursorrules` 文件，并将 `SKILL.md` 的内容粘贴进去，这样 Cursor 的 Chat、Composer 以及 Agent 均会自动遵循该分析框架。
+
+#### 2. 在 Claude 中使用
+* **在 Claude Projects 中使用（推荐）**：如果你是 Claude Pro/Team 用户，可以在 Project 中创建一个项目，并在 `Project Instructions` 中粘贴 `SKILL.md` 的内容。这非常适合在项目范围内针对架构抉择和技术选型进行多视角评估。
+* **作为自定义指令 (Custom Instructions)**：在 Claude 的个人 Profile 设置中，将提示词粘贴到 `Custom Instructions` 框中，使其成为你的全局默认分析助手。
+
+#### 3. 在 GitHub Copilot / Codex / OpenAI GPTs 中使用
+* **GitHub Copilot (.github/copilot-instructions.md)**：你可以在项目根目录下创建 `.github/copilot-instructions.md`，粘贴本框架的内容。Copilot Chat 会在回答项目相关问题时参考这些指令。
+* **OpenAI ChatGPT / GPTs**：在 ChatGPT 中创建一个专属 Custom GPT，在 "Instructions" 中填入 `SKILL.md` 的内容。你还可以将 `reference/` 下的文档上传至 Knowledge 中作为检索增强（RAG）。
+
+#### 4. 作为 Antigravity / Gemini IDE 技能导入
 将此项目克隆或复制到你的自定义技能目录（例如全局配置路径 `~/.gemini/config/skills/` 或项目根目录 `.agents/skills/`）：
 ```bash
 git clone https://github.com/edwardzhengif/skill-collective-wisdom.git ~/.gemini/config/skills/prompt-collective-wisdom
 ```
 IDE 将自动识别 `SKILL.md` 并注册为名为 `collective-wisdom` 的技能。
 
-#### 2. 直接作为 System Prompt 使用
-打开 `SKILL.md`，复制 `---` 之后的所有正文内容，粘贴到任意大语言模型（如 ChatGPT, Claude, Gemini）的系统提示词或自定义指令中即可。
+#### 5. 通用 System Prompt
+打开 `SKILL.md`，复制 `---` 之后的所有正文内容，粘贴到任意大语言模型客户端的系统提示词或自定义指令中即可。
 
 ---
 
@@ -110,15 +122,27 @@ This framework is highly compatible with IDE Custom Skills (such as Antigravity 
 
 ### How to Use
 
-#### 1. Import as an Antigravity / Gemini IDE Skill
+#### 1. In Cursor
+* **Global Rules**: Go to Cursor's `Settings -> Features -> Rules for AI`, and paste the content of `SKILL.md` (excluding YAML frontmatter).
+* **Project Rules (.cursorrules)**: Create a `.cursorrules` file in the root of your project, and paste the content of `SKILL.md` there. Cursor Chat, Composer, and Agent will automatically adopt this multi-perspective analysis framework.
+
+#### 2. In Claude
+* **Claude Projects (Recommended)**: For Claude Pro/Team users, create a Project and paste the text of `SKILL.md` into the `Project Instructions`. This is perfect for technical stack choices, architecture design, and decision support within a repository.
+* **Custom Instructions**: Paste the prompt into the `Custom Instructions` section in your Claude Profile Settings to use it as a global default analysis assistant.
+
+#### 3. In GitHub Copilot / Codex / OpenAI GPTs
+* **Copilot Instructions**: Create a `.github/copilot-instructions.md` file in your repository root, and paste the framework guidelines. Copilot Chat will read and apply it for repo-level queries.
+* **OpenAI ChatGPT / Custom GPTs**: Create a custom GPT in ChatGPT, and paste the `SKILL.md` content into its "Instructions". You can also upload the files in the `reference/` directory to the GPT's Knowledge base to provide additional context.
+
+#### 4. Import as an Antigravity / Gemini IDE Skill
 Clone or copy this repository into your custom skills directory (e.g., global path `~/.gemini/config/skills/` or workspace-scoped path `.agents/skills/`):
 ```bash
 git clone https://github.com/edwardzhengif/skill-collective-wisdom.git ~/.gemini/config/skills/prompt-collective-wisdom
 ```
 The IDE will automatically discover `SKILL.md` and load it as a skill named `collective-wisdom`.
 
-#### 2. Use Directly as a System Prompt
-Open `SKILL.md`, copy the markdown body below the YAML frontmatter delimiter (`---`), and paste it into any LLM's (ChatGPT, Claude, Gemini) system prompt or custom instructions section.
+#### 5. Generic System Prompt
+Copy the text in `SKILL.md` (below the `---` frontmatter delimiter) and paste it into the system prompt or custom instructions panel of any LLM client (Web UI, API playground, etc.).
 
 ---
 
